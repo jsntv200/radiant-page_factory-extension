@@ -1,9 +1,11 @@
+require 'radiant-page_factory-extension'
+
 require_dependency 'application_controller'
 
 class PageFactoryExtension < Radiant::Extension
-  version YAML::load_file(File.join(File.dirname(__FILE__), 'VERSION'))
-  description "A small DSL for intelligently defining content types."
-  url "http://github.com/joshfrench/radiant-page_factory-extension"
+  version     RadiantPageFactoryExtension::VERSION
+  description RadiantPageFactoryExtension::DESCRIPTION
+  url         RadiantPageFactoryExtension::URL
 
   def activate
     Page.send :include, PageFactory::PageExtensions
