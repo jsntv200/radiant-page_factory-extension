@@ -1,5 +1,4 @@
 require 'radiant-page_factory-extension'
-
 require_dependency 'application_controller'
 
 class PageFactoryExtension < Radiant::Extension
@@ -14,7 +13,7 @@ class PageFactoryExtension < Radiant::Extension
     Admin::PagesController.helper 'admin/part_description'
     Admin::PagePartsController.helper 'admin/part_description'
     admin.pages.edit.add :part_controls, 'admin/page_parts/part_description'
-    ActiveSupport::Dependencies.load_paths << File.join(Rails.root, 'lib')
-    ActiveSupport::Dependencies.load_paths << File.join(Rails.root, %w(app models))
+    ActiveSupport::Dependencies.autoload_paths << File.join(Rails.root, 'lib')
+    ActiveSupport::Dependencies.autoload_paths << File.join(Rails.root, %w(app models))
   end
 end
