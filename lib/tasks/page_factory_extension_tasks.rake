@@ -37,8 +37,10 @@ namespace :radiant do
         require 'radiant/extension_migrator'
         if ENV["VERSION"]
           PageFactoryExtension.migrator.migrate(ENV["VERSION"].to_i)
+          Rake::Task['db:schema:dump'].invoke
         else
           PageFactoryExtension.migrator.migrate
+          Rake::Task['db:schema:dump'].invoke
         end
       end
 
